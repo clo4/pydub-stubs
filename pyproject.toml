@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "pydub-stubs"
+version = "0.24.1.0"
+description = "Stub-only package containing type information for pydub"
+authors = ["SeparateRecords <me@rob.ac>"]
+license = "ISC"
+packages = [
+    { include = "pydub-stubs" }
+]
+keywords = [
+    "pydub",
+    "typing",
+    "stubs"
+]
+repository = "https://github.com/SeparateRecords/pydub-stubs"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: ISC License (ISCL)",
+    "Topic :: Software Development",
+    "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pydub = "^0.24.1"
+black = "^20.8b1"
+mypy = "^0.790"
+
+[tool.black]
+pyi = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -35,6 +35,22 @@ to a specific Pydub version will always get the latest stubs available.
 
 ## Changelog
 
+### Version 0.24.1.3
+
+* **Fixed overloads of `AudioSegment.fade`**<br>
+  Exactly two of `start`, `end`, and `duration` must be given.
+
+<details>
+<summary>Previous versions</summary>
+
+### Version 0.24.1.2
+
+* **Improved `AudioSegment.fade`**<br>
+  Changed to use overloads to prevent invalid method calls.
+
+* **Improved `AudioSegment.from_mono_audiosegments`**<br>
+  Use a positional-only parameter to ensure there's at least 1 argument.
+
 ### Version 0.24.1.1
 
 * **Fixed `AudioSegment.__init__`**<br>
@@ -45,9 +61,6 @@ to a specific Pydub version will always get the latest stubs available.
 
 * **Fixed `pydub.scipy_effects.high_pass_filter`**<br>
   Parameter `order` should be `int`, not `float`.
-
-<details>
-<summary>Previous versions</summary>
 
 ### Version 0.24.1.0
 

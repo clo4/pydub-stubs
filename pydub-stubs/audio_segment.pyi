@@ -115,35 +115,33 @@ class AudioSegment:
         times: Optional[int] = ...,
         gain_during_overlay: int = ...,
     ) -> AudioSegment: ...
-    def apply_gain(self, volume_change: int) -> AudioSegment: ...
-    @overload
-    def fade(self, *, to_gain: int = ..., from_gain: int = ...) -> AudioSegment: ...
+    def apply_gain(self, volume_change: float) -> AudioSegment: ...
     @overload
     def fade(
         self,
         *,
         start: int,
         end: int,
-        to_gain: int = ...,
-        from_gain: int = ...,
+        to_gain: float = ...,
+        from_gain: float = ...,
     ) -> AudioSegment: ...
     @overload
     def fade(
         self,
         *,
         start: int,
-        duration: int = ...,
-        to_gain: int = ...,
-        from_gain: int = ...,
+        duration: int,
+        to_gain: float = ...,
+        from_gain: float = ...,
     ) -> AudioSegment: ...
     @overload
     def fade(
         self,
         *,
         end: int,
-        duration: int = ...,
-        to_gain: int = ...,
-        from_gain: int = ...,
+        duration: int,
+        to_gain: float = ...,
+        from_gain: float = ...,
     ) -> AudioSegment: ...
     def fade_out(self, duration: int) -> AudioSegment: ...
     def fade_in(self, duration: int) -> AudioSegment: ...

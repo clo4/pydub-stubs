@@ -10,7 +10,7 @@ def low_pass_filter(
 def high_pass_filter(
     seg: AudioSegment,
     cutoff_freq: float,
-    order: float = ...,
+    order: int = ...,
 ) -> AudioSegment: ...
 def band_pass_filter(
     seg: AudioSegment,

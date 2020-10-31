@@ -18,30 +18,42 @@ from typing import (
 )
 
 PathLike = Union[str, bytes, os.PathLike[Any]]
+AudioData = Union[str, bytes, array.array[int], BinaryIO]
 
-class OverrideDict(TypedDict, final=False):
-    sample_width: int
+class MetadataDict(TypedDict):
+    channels: int
     frame_rate: int
     frame_width: int
+    sample_width: int
+
+class MetadataOverrideDict(TypedDict, total=False):
     channels: int
+    frame_rate: int
+    frame_width: int
+    sample_width: int
 
 # If it's typed as float, it's probably decibels. If it's int, it's
 # usually either milliseconds or hertz (whatever's logical)
 class AudioSegment:
     converter: ClassVar[str]
     DEFAULT_CODECS: ClassVar[Dict[str, str]]
+    @overload
+    def __init__(self, data: AudioData) -> None: ...
+    @overload
+    def __init__(self, data: AudioData, *, metadata: MetadataDict) -> None: ...
+    @overload
     def __init__(
         self,
-        data: Optional[Union[bytes, array.array[int]]] = ...,
+        data: AudioData,
         *,
-        sample_width: Optional[int] = ...,
-        frame_rate: Optional[int] = ...,
-        channels: Optional[int] = ...,
+        sample_width: int,
+        frame_rate: int,
+        channels: int,
     ) -> None: ...
     def _spawn(
         self,
-        data: Union[bytes, array.array[int], BinaryIO, List[bytes]],
-        overrides: OverrideDict = ...,
+        data: Union[AudioData, List[bytes]],
+        overrides: MetadataOverrideDict = ...,
     ) -> AudioSegment: ...
     def __add__(self, arg: Union[float, AudioSegment]) -> AudioSegment: ...
     def __radd__(self, rarg: AudioSegment) -> AudioSegment: ...

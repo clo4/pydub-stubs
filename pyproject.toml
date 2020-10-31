@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydub-stubs"
-version = "0.24.1.1"
+version = "0.24.1.2"
 description = "Stub-only package containing type information for pydub"
 authors = ["SeparateRecords <me@rob.ac>"]
 license = "ISC"
@@ -20,6 +20,7 @@ classifiers = [
     "Topic :: Software Development",
     "Typing :: Typed",
 ]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"

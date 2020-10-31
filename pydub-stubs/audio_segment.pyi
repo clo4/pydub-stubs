@@ -18,15 +18,15 @@ from typing import (
 )
 
 PathLike = Union[str, bytes, os.PathLike[Any]]
-AudioData = Union[str, bytes, array.array[int], BinaryIO]
+AudioDataSource = Union[str, bytes, array.array[int], BinaryIO]
 
-class MetadataDict(TypedDict):
+class Metadata(TypedDict):
     channels: int
     frame_rate: int
     frame_width: int
     sample_width: int
 
-class MetadataOverrideDict(TypedDict, total=False):
+class PartialMetadata(TypedDict, total=False):
     channels: int
     frame_rate: int
     frame_width: int
@@ -38,13 +38,13 @@ class AudioSegment:
     converter: ClassVar[str]
     DEFAULT_CODECS: ClassVar[Dict[str, str]]
     @overload
-    def __init__(self, data: AudioData) -> None: ...
+    def __init__(self, data: AudioDataSource) -> None: ...
     @overload
-    def __init__(self, data: AudioData, *, metadata: MetadataDict) -> None: ...
+    def __init__(self, data: AudioDataSource, *, metadata: Metadata) -> None: ...
     @overload
     def __init__(
         self,
-        data: AudioData,
+        data: AudioDataSource,
         *,
         sample_width: int,
         frame_rate: int,
@@ -52,8 +52,8 @@ class AudioSegment:
     ) -> None: ...
     def _spawn(
         self,
-        data: Union[AudioData, List[bytes]],
-        overrides: MetadataOverrideDict = ...,
+        data: Union[AudioDataSource, List[bytes]],
+        overrides: PartialMetadata = ...,
     ) -> AudioSegment: ...
     def __add__(self, arg: Union[float, AudioSegment]) -> AudioSegment: ...
     def __radd__(self, rarg: AudioSegment) -> AudioSegment: ...
@@ -95,7 +95,7 @@ class AudioSegment:
         bitrate: Optional[str] = ...,
         tags: Optional[Dict[str, str]] = ...,
         parameters: Optional[Sequence[str]] = ...,
-        id3v2_version: Optional[Literal["3", "4"]] = ...,
+        id3v2_version: Literal["3", "4"] = ...,
         cover: Optional[str] = ...,
     ) -> BinaryIO: ...
     def frame_count(self, ms: int = ...) -> float: ...
@@ -116,14 +116,34 @@ class AudioSegment:
         gain_during_overlay: int = ...,
     ) -> AudioSegment: ...
     def apply_gain(self, volume_change: int) -> AudioSegment: ...
+    @overload
+    def fade(self, *, to_gain: int = ..., from_gain: int = ...) -> AudioSegment: ...
+    @overload
     def fade(
         self,
         *,
-        start: Optional[int] = ...,
-        end: Optional[int] = ...,
-        duration: Optional[int] = ...,
-        to_gain: float = ...,
-        from_gain: float = ...,
+        start: int,
+        end: int,
+        to_gain: int = ...,
+        from_gain: int = ...,
+    ) -> AudioSegment: ...
+    @overload
+    def fade(
+        self,
+        *,
+        start: int,
+        duration: int = ...,
+        to_gain: int = ...,
+        from_gain: int = ...,
+    ) -> AudioSegment: ...
+    @overload
+    def fade(
+        self,
+        *,
+        end: int,
+        duration: int = ...,
+        to_gain: int = ...,
+        from_gain: int = ...,
     ) -> AudioSegment: ...
     def fade_out(self, duration: int) -> AudioSegment: ...
     def fade_in(self, duration: int) -> AudioSegment: ...
@@ -227,13 +247,11 @@ class AudioSegment:
     @classmethod
     def empty(cls) -> AudioSegment: ...
     @classmethod
-    def silent(
-        cls,
-        duration: int = ...,
-        frame_rate: int = ...,
-    ) -> AudioSegment: ...
+    def silent(cls, duration: int = ..., frame_rate: int = ...) -> AudioSegment: ...
     @classmethod
     def from_mono_audiosegments(
         cls,
+        __mono_segment: AudioSegment,
+        /,
         *mono_segments: AudioSegment,
     ) -> AudioSegment: ...

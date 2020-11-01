@@ -23,7 +23,7 @@ This is easy to type, but impossible to be 100% safe about.
 A great example of why this can is difficult is `pydub.scipy_effects`,
 which registers two effects that are named identically to those in
 `pydub.effects`, but have different signatures. Importing this module
-will override the previous effects, so the signatures are now wrong.
+will override the previous effects, so now the signatures are wrong.
 
 ### Q: What the hell is that version number?
 
@@ -35,13 +35,22 @@ to a specific Pydub version will always get the latest stubs available.
 
 ## Changelog
 
+### Version 0.24.1.4
+
+* **Improved signature of `AudioSegment.from_file`**<br>
+  The keyword arguments for raw/PCM audio don't require `format` to be
+  set to either `raw` or `pcm`.
+
+* **Fix package exports**<br>
+  Exports `AudioSegment` from `__init__.py`.
+
+<details>
+<summary>Previous versions</summary>
+
 ### Version 0.24.1.3
 
 * **Fixed overloads of `AudioSegment.fade`**<br>
   Exactly two of `start`, `end`, and `duration` must be given.
-
-<details>
-<summary>Previous versions</summary>
 
 ### Version 0.24.1.2
 

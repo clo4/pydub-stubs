@@ -168,16 +168,26 @@ class AudioSegment:
         cls,
         file: PathLike,
         *,
-        format: Literal["raw", "pcm"],
-        frame_rate: int,
-        channels: int,
-        sample_width: int,
+        format: Optional[str] = ...,
         codec: Optional[str] = ...,
         parameters: Optional[Sequence[str]] = ...,
     ) -> AudioSegment: ...
     @overload
     @classmethod
     def from_file(
+        cls,
+        file: PathLike,
+        *,
+        channels: int,
+        frame_rate: int,
+        sample_width: int,
+        format: Optional[str] = ...,
+        codec: Optional[str] = ...,
+        parameters: Optional[Sequence[str]] = ...,
+    ) -> AudioSegment: ...
+    @overload
+    @classmethod
+    def from_file_using_temporary_files(
         cls,
         file: PathLike,
         *,
@@ -191,20 +201,10 @@ class AudioSegment:
         cls,
         file: PathLike,
         *,
-        format: Literal["raw", "pcm"],
-        frame_rate: int,
         channels: int,
+        frame_rate: int,
         sample_width: int,
-        codec: Optional[str] = ...,
-        parameters: Optional[Sequence[str]] = ...,
-    ) -> AudioSegment: ...
-    @overload
-    @classmethod
-    def from_file_using_temporary_files(
-        cls,
-        file: PathLike,
-        *,
-        format: str = ...,
+        format: Optional[str] = ...,
         codec: Optional[str] = ...,
         parameters: Optional[Sequence[str]] = ...,
     ) -> AudioSegment: ...
@@ -240,7 +240,6 @@ class AudioSegment:
         frame_rate: int,
         channels: int,
         sample_width: int,
-        parameters: Optional[Sequence[str]] = ...,
     ) -> AudioSegment: ...
     @classmethod
     def empty(cls) -> AudioSegment: ...

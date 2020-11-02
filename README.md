@@ -35,6 +35,14 @@ to a specific Pydub version will always get the latest stubs available.
 
 ## Changelog
 
+### Version 0.24.1.5
+
+* **Fix `AudioSegment.export`**
+  First param is named `out_f` and isn't required.
+
+<details>
+<summary>Previous versions</summary>
+
 ### Version 0.24.1.4
 
 * **Improved signature of `AudioSegment.from_file`**<br>
@@ -43,9 +51,6 @@ to a specific Pydub version will always get the latest stubs available.
 
 * **Fix package exports**<br>
   Exports `AudioSegment` from `__init__.py`.
-
-<details>
-<summary>Previous versions</summary>
 
 ### Version 0.24.1.3
 

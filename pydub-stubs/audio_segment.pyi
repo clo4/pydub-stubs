@@ -40,21 +40,9 @@ class AudioSegment:
     @overload
     def __init__(self, data: AudioDataSource) -> None: ...
     @overload
-    def __init__(self, data: AudioDataSource, *, metadata: Metadata) -> None: ...
+    def __init__(self, data: AudioDataSource, *, sample_width: int, frame_rate: int, channels: int) -> None: ...
     @overload
-    def __init__(
-        self,
-        data: AudioDataSource,
-        *,
-        sample_width: int,
-        frame_rate: int,
-        channels: int,
-    ) -> None: ...
-    def _spawn(
-        self,
-        data: Union[AudioDataSource, List[bytes]],
-        overrides: PartialMetadata = ...,
-    ) -> AudioSegment: ...
+    def __init__(self, data: AudioDataSource, *, metadata: Metadata) -> None: ...
     def __add__(self, arg: Union[float, AudioSegment]) -> AudioSegment: ...
     def __radd__(self, rarg: AudioSegment) -> AudioSegment: ...
     def __sub__(self, arg: float) -> AudioSegment: ...
@@ -88,7 +76,7 @@ class AudioSegment:
     def array_type(self) -> Literal["b", "B", "h", "H", "i", "I"]: ...
     def export(
         self,
-        file: PathLike,
+        out_f: Optional[PathLike] = ...,
         *,
         format: Optional[str] = ...,
         codec: Optional[str] = ...,
@@ -100,11 +88,7 @@ class AudioSegment:
     ) -> BinaryIO: ...
     def frame_count(self, ms: int = ...) -> float: ...
     def get_frame(self, index: int) -> bytes: ...
-    def get_sample_slice(
-        self,
-        start_sample: Optional[int] = ...,
-        end_sample: Optional[int] = ...,
-    ) -> AudioSegment: ...
+    def get_sample_slice(self, start_sample: Optional[int] = ..., end_sample: Optional[int] = ...) -> AudioSegment: ...
     def append(self, seg: AudioSegment, *, crossfade: int = ...) -> AudioSegment: ...
     def overlay(
         self,
@@ -117,32 +101,11 @@ class AudioSegment:
     ) -> AudioSegment: ...
     def apply_gain(self, volume_change: float) -> AudioSegment: ...
     @overload
-    def fade(
-        self,
-        *,
-        start: int,
-        end: int,
-        to_gain: float = ...,
-        from_gain: float = ...,
-    ) -> AudioSegment: ...
+    def fade(self, *, start: int, end: int, to_gain: float = ..., from_gain: float = ...) -> AudioSegment: ...
     @overload
-    def fade(
-        self,
-        *,
-        start: int,
-        duration: int,
-        to_gain: float = ...,
-        from_gain: float = ...,
-    ) -> AudioSegment: ...
+    def fade(self, *, start: int, duration: int, to_gain: float = ..., from_gain: float = ...) -> AudioSegment: ...
     @overload
-    def fade(
-        self,
-        *,
-        end: int,
-        duration: int,
-        to_gain: float = ...,
-        from_gain: float = ...,
-    ) -> AudioSegment: ...
+    def fade(self, *, end: int, duration: int, to_gain: float = ..., from_gain: float = ...) -> AudioSegment: ...
     def fade_out(self, duration: int) -> AudioSegment: ...
     def fade_in(self, duration: int) -> AudioSegment: ...
     def reverse(self) -> AudioSegment: ...
@@ -151,26 +114,14 @@ class AudioSegment:
     def set_channels(self, channels: int) -> AudioSegment: ...
     def split_to_mono(self) -> List[AudioSegment]: ...
     def get_array_of_samples(
-        self,
-        array_type_override: Optional[
-            Literal["b", "B", "h", "H", "i", "I", "l", "L", "q", "Q"]
-        ] = ...,
+        self, array_type_override: Optional[Literal["b", "B", "h", "H", "i", "I", "l", "L", "q", "Q"]] = ...
     ) -> array.array[int]: ...
     def get_dc_offset(self, channel: Literal[1, 2]) -> int: ...
-    def remove_dc_offset(
-        self,
-        channel: Optional[Literal[1, 2]] = ...,
-        offset: Optional[float] = ...,
-    ) -> AudioSegment: ...
+    def remove_dc_offset(self, channel: Optional[Literal[1, 2]] = ..., offset: Optional[float] = ...) -> AudioSegment: ...
     @overload
     @classmethod
     def from_file(
-        cls,
-        file: PathLike,
-        *,
-        format: Optional[str] = ...,
-        codec: Optional[str] = ...,
-        parameters: Optional[Sequence[str]] = ...,
+        cls, file: PathLike, *, format: Optional[str] = ..., codec: Optional[str] = ..., parameters: Optional[Sequence[str]] = ...
     ) -> AudioSegment: ...
     @overload
     @classmethod
@@ -188,12 +139,7 @@ class AudioSegment:
     @overload
     @classmethod
     def from_file_using_temporary_files(
-        cls,
-        file: PathLike,
-        *,
-        format: Optional[str] = ...,
-        codec: Optional[str] = ...,
-        parameters: Optional[Sequence[str]] = ...,
+        cls, file: PathLike, *, format: Optional[str] = ..., codec: Optional[str] = ..., parameters: Optional[Sequence[str]] = ...
     ) -> AudioSegment: ...
     @overload
     @classmethod
@@ -209,46 +155,22 @@ class AudioSegment:
         parameters: Optional[Sequence[str]] = ...,
     ) -> AudioSegment: ...
     @classmethod
-    def from_mp3(
-        cls,
-        file: PathLike,
-        parameters: Optional[Sequence[str]] = ...,
-    ) -> AudioSegment: ...
+    def from_mp3(cls, file: PathLike, parameters: Optional[Sequence[str]] = ...) -> AudioSegment: ...
     @classmethod
-    def from_flv(
-        cls,
-        file: PathLike,
-        parameters: Optional[Sequence[str]] = ...,
-    ) -> AudioSegment: ...
+    def from_flv(cls, file: PathLike, parameters: Optional[Sequence[str]] = ...) -> AudioSegment: ...
     @classmethod
-    def from_ogg(
-        cls,
-        file: PathLike,
-        parameters: Optional[Sequence[str]] = ...,
-    ) -> AudioSegment: ...
+    def from_ogg(cls, file: PathLike, parameters: Optional[Sequence[str]] = ...) -> AudioSegment: ...
     @classmethod
-    def from_wav(
-        cls,
-        file: PathLike,
-        parameters: Optional[Sequence[str]] = ...,
-    ) -> AudioSegment: ...
+    def from_wav(cls, file: PathLike, parameters: Optional[Sequence[str]] = ...) -> AudioSegment: ...
     @classmethod
-    def from_raw(
-        cls,
-        file: PathLike,
-        *,
-        frame_rate: int,
-        channels: int,
-        sample_width: int,
-    ) -> AudioSegment: ...
+    def from_raw(cls, file: PathLike, *, frame_rate: int, channels: int, sample_width: int) -> AudioSegment: ...
     @classmethod
     def empty(cls) -> AudioSegment: ...
     @classmethod
     def silent(cls, duration: int = ..., frame_rate: int = ...) -> AudioSegment: ...
     @classmethod
-    def from_mono_audiosegments(
-        cls,
-        __mono_segment: AudioSegment,
-        /,
-        *mono_segments: AudioSegment,
-    ) -> AudioSegment: ...
+    def from_mono_audiosegments(cls, __seg: AudioSegment, /, *mono_segments: AudioSegment) -> AudioSegment: ...
+
+X = AudioSegment.from_file("")
+Y = AudioSegment.from_file("")
+Z = AudioSegment.from_mono_audiosegments(X)

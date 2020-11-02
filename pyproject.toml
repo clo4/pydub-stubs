@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydub-stubs"
-version = "0.24.1.4"
+version = "0.24.1.5"
 description = "Stub-only package containing type information for pydub"
 authors = ["SeparateRecords <me@rob.ac>"]
 license = "ISC"
@@ -32,6 +32,7 @@ mypy = "^0.790"
 
 [tool.black]
 pyi = true
+line-length = 130
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -32,8 +32,6 @@ class PartialMetadata(TypedDict, total=False):
     frame_width: int
     sample_width: int
 
-# If it's typed as float, it's probably decibels. If it's int, it's
-# usually either milliseconds or hertz (whatever's logical)
 class AudioSegment:
     converter: ClassVar[str]
     DEFAULT_CODECS: ClassVar[Dict[str, str]]
@@ -114,14 +112,20 @@ class AudioSegment:
     def set_channels(self, channels: int) -> AudioSegment: ...
     def split_to_mono(self) -> List[AudioSegment]: ...
     def get_array_of_samples(
-        self, array_type_override: Optional[Literal["b", "B", "h", "H", "i", "I", "l", "L", "q", "Q"]] = ...
+        self,
+        array_type_override: Optional[Literal["b", "B", "h", "H", "i", "I", "l", "L", "q", "Q"]] = ...,
     ) -> array.array[int]: ...
     def get_dc_offset(self, channel: Literal[1, 2]) -> int: ...
     def remove_dc_offset(self, channel: Optional[Literal[1, 2]] = ..., offset: Optional[float] = ...) -> AudioSegment: ...
     @overload
     @classmethod
     def from_file(
-        cls, file: PathLike, *, format: Optional[str] = ..., codec: Optional[str] = ..., parameters: Optional[Sequence[str]] = ...
+        cls,
+        file: PathLike,
+        *,
+        format: Optional[str] = ...,
+        codec: Optional[str] = ...,
+        parameters: Optional[Sequence[str]] = ...,
     ) -> AudioSegment: ...
     @overload
     @classmethod
@@ -139,7 +143,12 @@ class AudioSegment:
     @overload
     @classmethod
     def from_file_using_temporary_files(
-        cls, file: PathLike, *, format: Optional[str] = ..., codec: Optional[str] = ..., parameters: Optional[Sequence[str]] = ...
+        cls,
+        file: PathLike,
+        *,
+        format: Optional[str] = ...,
+        codec: Optional[str] = ...,
+        parameters: Optional[Sequence[str]] = ...,
     ) -> AudioSegment: ...
     @overload
     @classmethod
@@ -170,7 +179,3 @@ class AudioSegment:
     def silent(cls, duration: int = ..., frame_rate: int = ...) -> AudioSegment: ...
     @classmethod
     def from_mono_audiosegments(cls, __seg: AudioSegment, /, *mono_segments: AudioSegment) -> AudioSegment: ...
-
-X = AudioSegment.from_file("")
-Y = AudioSegment.from_file("")
-Z = AudioSegment.from_mono_audiosegments(X)

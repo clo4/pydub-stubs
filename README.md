@@ -25,23 +25,35 @@ which registers two effects that are named identically to those in
 `pydub.effects`, but have different signatures. Importing this module
 will override the previous effects, so now the signatures are wrong.
 
-### Q: What the hell is that version number?
+### Q: What's that version number?
 
 `major.minor.patch.stubs`, where major/minor/patch are the latest
 supported Pydub version. The stubs version being last means pinning
 to a specific Pydub version will always get the latest stubs available.
 
+### Q: What is `Metadata` and `PartialMetadata`?
+
+These are dictionaries that were originally used when creating an
+AudioSegment. `Metadata` and `PartialMetadata` do not exist at runtime.
+Using these is no longer recommended, but they're still supported and
+used internally. You can use the `channels`, `frame_rate`, and
+`sample_rate` keyword arguments.
+
 <br>
 
 ## Changelog
 
-### Version 0.24.1.5
+### Version 0.24.1.6
 
-* **Fix `AudioSegment.export`**
-  First param is named `out_f` and isn't required.
+* **Remove testing symbols from `pydub.audio_segment`**<br>
 
 <details>
 <summary>Previous versions</summary>
+
+### Version 0.24.1.5
+
+* **Fix `AudioSegment.export`**<br>
+  First param is named `out_f` and isn't required.
 
 ### Version 0.24.1.4
 

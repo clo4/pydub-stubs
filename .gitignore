@@ -18,5 +18,6 @@ dist/
 .env
 .venv/
 
-# Store log files in the root directory
-*.log
+# npm
+node_modules/
+package-lock.json

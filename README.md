@@ -43,12 +43,21 @@ used internally. You can use the `channels`, `frame_rate`, and
 
 ## Changelog
 
-### Version 0.24.1.6
+### Version 0.24.1.7
 
-* **Remove testing symbols from `pydub.audio_segment`**<br>
+* **Add `AudioSegment._spawn` (again)**<br>
+  This was accidentally removed in an earlier version.
+
+* **Improve `pydub.effects.invert_phase`**<br>
+  This is technically less accurate as `(0, 0)` is equivalent
+  to `(0, 1)`.
 
 <details>
 <summary>Previous versions</summary>
+
+### Version 0.24.1.6
+
+* **Remove testing symbols from `pydub.audio_segment`**<br>
 
 ### Version 0.24.1.5
 

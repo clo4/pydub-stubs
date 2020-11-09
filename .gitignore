@@ -8,14 +8,10 @@ __pycache__/
 # Distribution / packaging
 dist/
 
-# Unit test / coverage reports
-.pytest_cache/
-
 # pyenv
 .python-version
 
 # Environments
-.env
 .venv/
 
 # npm

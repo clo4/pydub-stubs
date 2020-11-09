@@ -43,6 +43,15 @@ used internally. You can use the `channels`, `frame_rate`, and
 
 ## Changelog
 
+### Version 0.24.1.8
+
+* **Export other modules**<br>
+  Adds exports for effects, exceptions, generators, playback, and
+  scipy_effects
+
+<details>
+<summary>Previous versions</summary>
+
 ### Version 0.24.1.7
 
 * **Add `AudioSegment._spawn` (again)**<br>
@@ -51,9 +60,6 @@ used internally. You can use the `channels`, `frame_rate`, and
 * **Improve `pydub.effects.invert_phase`**<br>
   This is technically less accurate as `(0, 0)` is equivalent
   to `(0, 1)`.
-
-<details>
-<summary>Previous versions</summary>
 
 ### Version 0.24.1.6
 

@@ -43,14 +43,20 @@ used internally. You can use the `channels`, `frame_rate`, and
 
 ## Changelog
 
+### Version 0.24.1.9
+
+* **Add undocumented parameter of `AudioSegment.from_file`**<br>
+  `read_ahead_limit` is absent from the documentation but a supported
+  keyword argument.
+
+<details>
+<summary>Previous versions</summary>
+
 ### Version 0.24.1.8
 
 * **Export other modules**<br>
   Adds exports for effects, exceptions, generators, playback, and
   scipy_effects
-
-<details>
-<summary>Previous versions</summary>
 
 ### Version 0.24.1.7
 

@@ -1,5 +1,9 @@
 {
+  "private": true,
   "devDependencies": {
     "pyright": "^1.1.83"
+  },
+  "scripts": {
+    "postinstall": "poetry install"
   }
 }

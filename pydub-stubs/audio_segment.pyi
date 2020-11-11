@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import array
 import os
+from array import array
 from typing import (
     Any,
     ClassVar,
@@ -18,7 +18,7 @@ from typing import (
 )
 
 PathLike = Union[str, bytes, os.PathLike[Any]]
-AudioDataSource = Union[str, bytes, array.array[int], BinaryIO]
+AudioDataSource = Union[str, bytes, array[int], BinaryIO]
 
 class Metadata(TypedDict):
     channels: int
@@ -119,7 +119,7 @@ class AudioSegment:
     def get_array_of_samples(
         self,
         array_type_override: Optional[Literal["b", "B", "h", "H", "i", "I", "l", "L", "q", "Q"]] = ...,
-    ) -> array.array[int]: ...
+    ) -> array[int]: ...
     def get_dc_offset(self, channel: Literal[1, 2]) -> int: ...
     def remove_dc_offset(self, channel: Optional[Literal[1, 2]] = ..., offset: Optional[float] = ...) -> AudioSegment: ...
     @overload
@@ -130,6 +130,7 @@ class AudioSegment:
         *,
         format: Optional[str] = ...,
         codec: Optional[str] = ...,
+        read_ahead_limit: int = ...,
         parameters: Optional[Sequence[str]] = ...,
     ) -> AudioSegment: ...
     @overload
@@ -143,6 +144,7 @@ class AudioSegment:
         sample_width: int,
         format: Optional[str] = ...,
         codec: Optional[str] = ...,
+        read_ahead_limit: int = ...,
         parameters: Optional[Sequence[str]] = ...,
     ) -> AudioSegment: ...
     @overload

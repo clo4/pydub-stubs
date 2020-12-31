@@ -2,8 +2,10 @@
 
 Pydub version: **0.24.1**
 
-**`pydub-stubs` provides type information for Pydub.**<br>
+**`pydub-stubs` provides type information for [Pydub].**<br>
 Only the public interface is guaranteed to be typed.
+
+[Pydub]: https://github.com/jiaaro/pydub
 
 ```
 pip install pydub-stubs
@@ -11,7 +13,7 @@ pip install pydub-stubs
 
 <br>
 
-## Aniticipated Questions
+## Anticipated Questions
 
 ### Q: Why is <code>AudioSegment.<i>some_effect(...)</i></code> missing?
 
@@ -20,14 +22,15 @@ pip install pydub-stubs
 Pydub dynamically adds certain functions to `AudioSegment` at runtime.
 This is easy to type, but impossible to be 100% safe about.
 
-A great example of why this can is difficult is `pydub.scipy_effects`,
+A great example of why this is unsafe is `pydub.scipy_effects`,
 which registers two effects that are named identically to those in
 `pydub.effects`, but have different signatures. Importing this module
-will override the previous effects, so now the signatures are wrong.
+anywhere will override the previous effects, so now the signatures are
+wrong.
 
 ### Q: What's that version number?
 
-`major.minor.patch.stubs`, where major/minor/patch are the latest
+`major.minor.patch.stubs`, where major/minor/patch is the latest
 supported Pydub version. The stubs version being last means pinning
 to a specific Pydub version will always get the latest stubs available.
 
@@ -46,7 +49,7 @@ used internally. You can use the `channels`, `frame_rate`, and
 ### Version 0.24.1.9
 
 * **Add undocumented parameter of `AudioSegment.from_file`**<br>
-  `read_ahead_limit` is absent from the documentation but a supported
+  `read_ahead_limit` is absent from the documentation but is a supported
   keyword argument.
 
 <details>

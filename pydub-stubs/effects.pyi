@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Callable, Tuple, Union
+from typing import Callable, Literal, Tuple, Union, overload
 
 from .audio_segment import AudioSegment
 
@@ -11,7 +11,18 @@ def strip_silence(seg: AudioSegment, silence_len: int = ..., silence_thresh: int
 def compress_dynamic_range(
     seg: AudioSegment, threshold: float = ..., ratio: float = ..., attack: float = ..., release: float = ...
 ) -> AudioSegment: ...
-def invert_phase(seg: AudioSegment, channels: Union[Tuple[int, int]] = ...) -> AudioSegment: ...
+@overload
+def invert_phase(
+    seg: AudioSegment,
+    # For some reason, pydub treats (0, 0) as (0, 1)
+    channels: Union[
+        Tuple[Literal[1], Literal[1]],
+        Tuple[Literal[1], Literal[0]],
+        Tuple[Literal[0], Literal[1]],
+    ] = ...,
+) -> AudioSegment: ...
+@overload
+def invert_phase(seg: AudioSegment, channels: Tuple[int, int] = ...) -> AudioSegment: ...
 def low_pass_filter(seg: AudioSegment, cutoff: float) -> AudioSegment: ...
 def high_pass_filter(seg: AudioSegment, cutoff: float) -> AudioSegment: ...
 def pan(seg: AudioSegment, pan_amount: float) -> AudioSegment: ...

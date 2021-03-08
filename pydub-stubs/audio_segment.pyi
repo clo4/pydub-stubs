@@ -48,6 +48,7 @@ class AudioSegment:
     def __len__(self) -> int: ...
     def __iter__(self) -> Iterator[AudioSegment]: ...
     def __getitem__(self, ms: Union[int, slice]) -> AudioSegment: ...
+    def __getattr__(self, attr: str) -> Any: ...
     @property
     def channels(self) -> int: ...
     @property
@@ -132,6 +133,8 @@ class AudioSegment:
         codec: Optional[str] = ...,
         read_ahead_limit: int = ...,
         parameters: Optional[Sequence[str]] = ...,
+        start_second: Optional[float] = ...,
+        duration: Optional[float] = ...,
     ) -> AudioSegment: ...
     @overload
     @classmethod
@@ -146,6 +149,8 @@ class AudioSegment:
         codec: Optional[str] = ...,
         read_ahead_limit: int = ...,
         parameters: Optional[Sequence[str]] = ...,
+        start_second: Optional[float] = ...,
+        duration: Optional[float] = ...,
     ) -> AudioSegment: ...
     @overload
     @classmethod
@@ -156,6 +161,8 @@ class AudioSegment:
         format: Optional[str] = ...,
         codec: Optional[str] = ...,
         parameters: Optional[Sequence[str]] = ...,
+        start_second: Optional[float] = ...,
+        duration: Optional[float] = ...,
     ) -> AudioSegment: ...
     @overload
     @classmethod
@@ -169,6 +176,8 @@ class AudioSegment:
         format: Optional[str] = ...,
         codec: Optional[str] = ...,
         parameters: Optional[Sequence[str]] = ...,
+        start_second: Optional[float] = ...,
+        duration: Optional[float] = ...,
     ) -> AudioSegment: ...
     @classmethod
     def from_mp3(cls, file: PathLike, parameters: Optional[Sequence[str]] = ...) -> AudioSegment: ...

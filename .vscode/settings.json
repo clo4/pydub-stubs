@@ -1,8 +1,8 @@
 {
     "python.formatting.provider": "black",
-    "python.analysis.typeCheckingMode": "strict",
     "[python]": {
         "editor.formatOnSave": true,
         "editor.rulers": [130]
     },
+    "python.pythonPath": "c:\\Users\\Rob\\Workspaces\\pydub-stubs\\.venv\\Scripts\\python.exe",
 }

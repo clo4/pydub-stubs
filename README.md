@@ -1,6 +1,6 @@
 # pydub-stubs
 
-Pydub version: **0.24.1**
+Pydub version: **0.25.0**
 
 **`pydub-stubs` provides type information for [Pydub].**<br>
 Only the public interface is guaranteed to be typed.
@@ -28,12 +28,6 @@ which registers two effects that are named identically to those in
 anywhere will override the previous effects, so now the signatures are
 wrong.
 
-### Q: What's that version number?
-
-`major.minor.patch.stubs`, where major/minor/patch is the latest
-supported Pydub version. The stubs version being last means pinning
-to a specific Pydub version will always get the latest stubs available.
-
 ### Q: What is `Metadata` and `PartialMetadata`?
 
 These are dictionaries that were originally used when creating an
@@ -46,14 +40,19 @@ used internally. You can use the `channels`, `frame_rate`, and
 
 ## Changelog
 
+### Version 0.25.0.0
+
+* **Update to pydub 0.25.0**<br>
+  This includes support for the new effects & parameters.
+
+<details>
+<summary>Previous versions</summary>
+
 ### Version 0.24.1.9
 
 * **Add undocumented parameter of `AudioSegment.from_file`**<br>
   `read_ahead_limit` is absent from the documentation but is a supported
   keyword argument.
-
-<details>
-<summary>Previous versions</summary>
 
 ### Version 0.24.1.8
 

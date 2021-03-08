@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydub-stubs"
-version = "0.24.1.9"
+version = "0.25.0.0"
 description = "Stub-only package containing type information for pydub"
 authors = ["SeparateRecords <me@rob.ac>"]
 license = "ISC"

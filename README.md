@@ -17,14 +17,12 @@ pip install pydub-stubs
 
 ### Q: Why is <code>AudioSegment.<i>effect(...)</i></code> missing?
 
-**TL;DR:** Import it as a function from `pydub.effects`.
-
 Pydub adds methods to `AudioSegment` at runtime, which means it's
 easier to modularize but also means there's no guarantee that a
-method signature is correct.
+method signature is correct. For example, `pydub.scipy_effects` overwrites two methods from `pydub.effects` with different signatures.
 
-For example, `pydub.scipy_effects` overwrites two methods from
-`pydub.effects` with different signatures.
+To be 100% safe, all effects must be imported as functions from
+`pydub.effects`. Unknown methods are typed as `Any`.
 
 ### Q: What is `Metadata` and `PartialMetadata`?
 

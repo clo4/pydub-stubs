@@ -14,7 +14,6 @@ def compress_dynamic_range(
 @overload
 def invert_phase(
     seg: AudioSegment,
-    # For some reason, pydub treats (0, 0) as (0, 1)
     channels: Union[
         Tuple[Literal[1], Literal[1]],
         Tuple[Literal[1], Literal[0]],

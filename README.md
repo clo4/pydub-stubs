@@ -45,6 +45,17 @@ used internally. You can use the `channels`, `frame_rate`, and
 * **Update to pydub 0.25.0**<br>
   This includes support for the new effects & parameters.
 
+* **Update signature of `effects.invert_phase`, _again_**<br>
+  Literals as the default signature with a graceful fallback.
+
+* **Add `silence` module**<br>
+  pydub 0.25.0 adds documentation for some of these functions, so I'm
+  treating this as part of the public interface.
+
+* **Add `utils.register_pydub_effect` decorator**<br>
+  This is (as far as I can tell) the only acknowledged function from
+  `utils`.
+
 <details>
 <summary>Previous versions</summary>
 

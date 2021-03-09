@@ -1,8 +1,6 @@
 from __future__ import annotations
 from typing import Literal, overload
-
 from .audio_segment import AudioSegment
-
 @overload
 def eq(
     seg: AudioSegment,
@@ -26,9 +24,3 @@ def eq(
 def low_pass_filter(seg: AudioSegment, cutoff_freq: float, order: int = ...) -> AudioSegment: ...
 def high_pass_filter(seg: AudioSegment, cutoff_freq: float, order: int = ...) -> AudioSegment: ...
 def band_pass_filter(seg: AudioSegment, low_cutoff_freq: float, high_cutoff_freq: float, order: int = ...) -> AudioSegment: ...
-
-a = AudioSegment("")
-
-something: str = "high_shelf"
-
-e = eq(a, 3000, filter_mode=something)

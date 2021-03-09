@@ -11,7 +11,7 @@ def eq(
     gain_dB: int = ...,
     order: int = ...,
 ) -> AudioSegment: ...
-@overload
+@overload  # fallback
 def eq(
     seg: AudioSegment,
     focus_freq: int,

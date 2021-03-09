@@ -5,9 +5,7 @@ from array import array
 from typing import (
     Any,
     ClassVar,
-    Dict,
     Iterator,
-    List,
     Literal,
     Optional,
     Sequence,
@@ -34,7 +32,7 @@ class PartialMetadata(TypedDict, total=False):
 
 class AudioSegment:
     converter: ClassVar[str]
-    DEFAULT_CODECS: ClassVar[Dict[str, str]]
+    DEFAULT_CODECS: ClassVar[dict[str, str]]
     @overload
     def __init__(self, data: _AudioDataSource) -> None: ...
     @overload
@@ -75,7 +73,7 @@ class AudioSegment:
     def array_type(self) -> Literal["b", "B", "h", "H", "i", "I"]: ...
     def _spawn(
         self,
-        data: Union[_AudioDataSource, List[bytes]],
+        data: Union[_AudioDataSource, list[bytes]],
         overrides: PartialMetadata = ...,
     ) -> AudioSegment: ...
     @overload
@@ -86,7 +84,7 @@ class AudioSegment:
         format: str = ...,
         codec: Optional[str] = ...,
         bitrate: Optional[str] = ...,
-        tags: Optional[Dict[str, str]] = ...,
+        tags: Optional[dict[str, str]] = ...,
         parameters: Optional[Sequence[str]] = ...,
         id3v2_version: Literal["3", "4"] = ...,
         cover: Optional[str] = ...,
@@ -99,7 +97,7 @@ class AudioSegment:
         format: str = ...,
         codec: Optional[str] = ...,
         bitrate: Optional[str] = ...,
-        tags: Optional[Dict[str, str]] = ...,
+        tags: Optional[dict[str, str]] = ...,
         parameters: Optional[Sequence[str]] = ...,
         id3v2_version: str = ...,
         cover: Optional[str] = ...,
@@ -130,7 +128,7 @@ class AudioSegment:
     def set_sample_width(self, sample_width: int) -> AudioSegment: ...
     def set_frame_rate(self, frame_rate: int) -> AudioSegment: ...
     def set_channels(self, channels: int) -> AudioSegment: ...
-    def split_to_mono(self) -> List[AudioSegment]: ...
+    def split_to_mono(self) -> list[AudioSegment]: ...
     @overload
     def get_array_of_samples(
         self,

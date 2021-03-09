@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Callable, Literal, Tuple, Union, overload
+from typing import Callable, Literal, Union, overload
 
 from .audio_segment import AudioSegment
 
@@ -15,13 +15,13 @@ def compress_dynamic_range(
 def invert_phase(
     seg: AudioSegment,
     channels: Union[
-        Tuple[Literal[1], Literal[1]],
-        Tuple[Literal[1], Literal[0]],
-        Tuple[Literal[0], Literal[1]],
+        tuple[Literal[1], Literal[1]],
+        tuple[Literal[1], Literal[0]],
+        tuple[Literal[0], Literal[1]],
     ] = ...,
 ) -> AudioSegment: ...
 @overload  # fallback
-def invert_phase(seg: AudioSegment, channels: Tuple[int, int] = ...) -> AudioSegment: ...
+def invert_phase(seg: AudioSegment, channels: tuple[int, int] = ...) -> AudioSegment: ...
 def low_pass_filter(seg: AudioSegment, cutoff: float) -> AudioSegment: ...
 def high_pass_filter(seg: AudioSegment, cutoff: float) -> AudioSegment: ...
 def pan(seg: AudioSegment, pan_amount: float) -> AudioSegment: ...

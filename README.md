@@ -1,6 +1,6 @@
 # pydub-stubs
 
-Pydub version: **0.25.0**
+Pydub version: **0.25.1**
 
 **`pydub-stubs` provides type information for [Pydub].**<br>
 Only the public interface is guaranteed to be typed.
@@ -36,7 +36,7 @@ internally. You can use the `channels`, `frame_rate`, and
 
 ## Changelog
 
-### Version 0.25.0.0
+### Version 0.25.1.0
 
 * **Add v0.25.0 features**<br>
   This includes `pydub.scipy_effects.eq` and new classmethod
@@ -45,12 +45,8 @@ internally. You can use the `channels`, `frame_rate`, and
 * **Use literals in signatures**<br>
   Literals are now used where possible, with fallback overloads.
 
-* **Add `pydub.silence`**<br>
-  Documentation was added in v0.25.0, so it looks to be part of the
-  API.
-
-* **Add `pydub.utils`**<br>
-  Currently only has `register_pydub_effect`.
+* **Add missing modules**<br>
+  `pydub.silence` and `pydub.utils`
 
 <details>
 <summary>Previous versions</summary>

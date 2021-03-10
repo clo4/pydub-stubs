@@ -1,16 +1,16 @@
 [tool.poetry]
 name = "pydub-stubs"
-version = "0.25.0.0"
+version = "0.25.1.0"
 description = "Stub-only package containing type information for pydub"
 authors = ["SeparateRecords <me@rob.ac>"]
 license = "ISC"
 packages = [
-    { include = "pydub-stubs" }
+    { include = "pydub-stubs" },
 ]
 keywords = [
     "pydub",
     "typing",
-    "stubs"
+    "stubs",
 ]
 repository = "https://github.com/SeparateRecords/pydub-stubs"
 classifiers = [

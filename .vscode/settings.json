@@ -10,5 +10,4 @@
         "editor.quickSuggestions": false,
         "editor.renderWhitespace": "boundary"
     },
-    "python.pythonPath": "c:\\Users\\Rob\\Workspaces\\pydub-stubs\\.venv\\Scripts\\python.exe",
 }

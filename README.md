@@ -45,7 +45,8 @@ These are legacy types that have been replaced by the `channels`,
 * **Added missing modules**<br>
   `pydub.silence` and `pydub.utils`
 
-<details> <summary>Previous versions</summary>
+<details>
+<summary>Previous versions</summary>
 
 ### Version 0.24.1.9
 

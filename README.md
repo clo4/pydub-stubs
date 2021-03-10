@@ -17,20 +17,18 @@ pip install pydub-stubs
 
 ### Q: Why is <code>AudioSegment.<i>effect(...)</i></code> missing?
 
-Pydub adds methods to `AudioSegment` at runtime, which means it's
-easier to modularize but also means there's no guarantee that a
-method signature is correct. For example, `pydub.scipy_effects` overwrites two methods from `pydub.effects` with different signatures.
+Pydub adds methods to `AudioSegment` at runtime, which means it's easier to
+modularize but also means there's no guarantee that a method signature is
+correct. For example, `pydub.scipy_effects` replaces two methods from
+`pydub.effects` with different signatures.
 
 To be 100% safe, all effects must be imported as functions from
 `pydub.effects`. Unknown methods are typed as `Any`.
 
 ### Q: What is `Metadata` and `PartialMetadata`?
 
-Pydub originally used dictionaries when creating an AudioSegment.
-`Metadata` and `PartialMetadata` do not exist at runtime. Using these
-is no longer recommended, but they're still supported and used
-internally. You can use the `channels`, `frame_rate`, and
-`sample_rate` keyword arguments.
+These are legacy types that have been replaced by the `channels`,
+`frame_rate`, and `sample_rate` keyword arguments.
 
 <br>
 
@@ -38,56 +36,52 @@ internally. You can use the `channels`, `frame_rate`, and
 
 ### Version 0.25.1.0
 
-* **Add v0.25.0 features**<br>
-  This includes `pydub.scipy_effects.eq` and new classmethod
-  parameters.
+* **Added v0.25.0 features**<br>
+  This includes `pydub.scipy_effects.eq` and new classmethod parameters.
 
-* **Use literals in signatures**<br>
-  Literals are now used where possible, with fallback overloads.
+* **Signatures now use literals where possible.**<br>
+  Overloaded implementations exist as a fallback.
 
-* **Add missing modules**<br>
+* **Added missing modules**<br>
   `pydub.silence` and `pydub.utils`
 
-<details>
-<summary>Previous versions</summary>
+<details> <summary>Previous versions</summary>
 
 ### Version 0.24.1.9
 
 * **Add undocumented parameter of `AudioSegment.from_file`**<br>
-  `read_ahead_limit` is absent from the documentation but is a
-  supported keyword argument.
+  `read_ahead_limit` is absent from the documentation but is a supported
+  keyword argument.
 
 ### Version 0.24.1.8
 
 * **Export other modules**<br>
-  Adds exports for effects, exceptions, generators, playback, and
-  scipy_effects
+  Adds exports for effects, exceptions, generators, playback, and scipy_effects
 
 ### Version 0.24.1.7
 
-* **Add `AudioSegment._spawn` (again)**<br>
+* **Added `AudioSegment._spawn` (again)**<br>
   This was accidentally removed in an earlier version.
 
-* **Improve `pydub.effects.invert_phase`**<br>
-  This is technically less accurate as `(0, 0)` is equivalent
-  to `(0, 1)`.
+* **Improved `pydub.effects.invert_phase`**<br>
+  This is technically less accurate as `(0, 0)` is equivalent to `(0, 1)`.
 
 ### Version 0.24.1.6
 
-* **Remove testing symbols from `pydub.audio_segment`**<br>
+* **Removed testing symbols from `pydub.audio_segment`**<br>
 
 ### Version 0.24.1.5
 
-* **Fix `AudioSegment.export`**<br>
+* **Fixed `AudioSegment.export`**<br>
   First param is named `out_f` and isn't required.
 
 ### Version 0.24.1.4
 
 * **Improved signature of `AudioSegment.from_file`**<br>
-  The keyword arguments for raw/PCM audio don't require `format` to
-  be set to either `raw` or `pcm`.
+  The keyword arguments for raw/PCM audio don't require `format` to be set to
+  either `raw` or `pcm`.
 
-* **Fix package exports**<br>
+* **Fixed package exports**<br>
   Exports `AudioSegment` from `__init__.py`.
 
 ### Version 0.24.1.3
@@ -101,8 +95,7 @@ internally. You can use the `channels`, `frame_rate`, and
   Changed to use overloads to prevent invalid method calls.
 
 * **Improved `AudioSegment.from_mono_audiosegments`**<br>
-  Use a positional-only parameter to ensure there's at least 1
-  argument.
+  Use a positional-only parameter to ensure there's at least 1 argument.
 
 ### Version 0.24.1.1
 

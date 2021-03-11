@@ -1,8 +1,17 @@
 {
     "python.formatting.provider": "black",
-    "python.analysis.typeCheckingMode": "strict",
     "[python]": {
         "editor.formatOnSave": true,
-        "editor.rulers": [130]
+        "editor.rulers": [
+            130
+        ]
+    },
+    "[markdown]": {
+        "editor.wordWrap": "off",
+        "editor.rulers": [
+            80
+        ],
+        "editor.quickSuggestions": false,
+        "editor.renderWhitespace": "boundary",
     },
 }

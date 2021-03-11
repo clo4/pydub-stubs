@@ -1,6 +1,6 @@
 # pydub-stubs
 
-Pydub version: **0.24.1**
+Pydub version: **0.25.1**
 
 **`pydub-stubs` provides type information for [Pydub].**<br>
 Only the public interface is guaranteed to be typed.
@@ -15,36 +15,32 @@ pip install pydub-stubs
 
 ## Anticipated Questions
 
-### Q: Why is <code>AudioSegment.<i>some_effect(...)</i></code> missing?
+### Q: Why is <code>AudioSegment.<i>effect(...)</i></code> missing?
 
-**TL;DR:** Import it as a function from `pydub.effects`.
-
-Pydub dynamically adds certain functions to `AudioSegment` at runtime.
-This is easy to type, but impossible to be 100% safe about.
-
-A great example of why this is unsafe is `pydub.scipy_effects`,
-which registers two effects that are named identically to those in
-`pydub.effects`, but have different signatures. Importing this module
-anywhere will override the previous effects, so now the signatures are
-wrong.
-
-### Q: What's that version number?
-
-`major.minor.patch.stubs`, where major/minor/patch is the latest
-supported Pydub version. The stubs version being last means pinning
-to a specific Pydub version will always get the latest stubs available.
+You need to import it as a function from `pydub.effects`.
 
 ### Q: What is `Metadata` and `PartialMetadata`?
 
-These are dictionaries that were originally used when creating an
-AudioSegment. `Metadata` and `PartialMetadata` do not exist at runtime.
-Using these is no longer recommended, but they're still supported and
-used internally. You can use the `channels`, `frame_rate`, and
-`sample_rate` keyword arguments.
+These are legacy types that have been replaced by the `channels`,
+`frame_rate`, and `sample_rate` keyword arguments.
 
 <br>
 
 ## Changelog
+
+### Version 0.25.1.0
+
+* **Added v0.25.0 features**<br>
+  This includes `pydub.scipy_effects.eq` and new classmethod parameters.
+
+* **Signatures now use literals where possible**<br>
+  Overloaded implementations exist as a fallback.
+
+* **Added missing modules**<br>
+  `pydub.silence` and `pydub.utils`
+
+<details>
+<summary>Previous versions</summary>
 
 ### Version 0.24.1.9
 
@@ -52,40 +48,35 @@ used internally. You can use the `channels`, `frame_rate`, and
   `read_ahead_limit` is absent from the documentation but is a supported
   keyword argument.
 
-<details>
-<summary>Previous versions</summary>
-
 ### Version 0.24.1.8
 
 * **Export other modules**<br>
-  Adds exports for effects, exceptions, generators, playback, and
-  scipy_effects
+  Adds exports for effects, exceptions, generators, playback, and scipy_effects
 
 ### Version 0.24.1.7
 
-* **Add `AudioSegment._spawn` (again)**<br>
+* **Added `AudioSegment._spawn` (again)**<br>
   This was accidentally removed in an earlier version.
 
-* **Improve `pydub.effects.invert_phase`**<br>
-  This is technically less accurate as `(0, 0)` is equivalent
-  to `(0, 1)`.
+* **Improved `pydub.effects.invert_phase`**<br>
+  This is technically less accurate as `(0, 0)` is equivalent to `(0, 1)`.
 
 ### Version 0.24.1.6
 
-* **Remove testing symbols from `pydub.audio_segment`**<br>
+* **Removed testing symbols from `pydub.audio_segment`**<br>
 
 ### Version 0.24.1.5
 
-* **Fix `AudioSegment.export`**<br>
+* **Fixed `AudioSegment.export`**<br>
   First param is named `out_f` and isn't required.
 
 ### Version 0.24.1.4
 
 * **Improved signature of `AudioSegment.from_file`**<br>
-  The keyword arguments for raw/PCM audio don't require `format` to be
-  set to either `raw` or `pcm`.
+  The keyword arguments for raw/PCM audio don't require `format` to be set to
+  either `raw` or `pcm`.
 
-* **Fix package exports**<br>
+* **Fixed package exports**<br>
   Exports `AudioSegment` from `__init__.py`.
 
 ### Version 0.24.1.3

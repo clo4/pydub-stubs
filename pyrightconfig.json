@@ -1,3 +1,8 @@
 {
-    "typeCheckingMode": "strict"
+    "typeCheckingMode": "strict",
+    "include": [
+        "pydub-stubs"
+    ],
+    "venvPath": ".",
+    "venv": ".venv"
 }

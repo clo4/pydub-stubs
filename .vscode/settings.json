@@ -2,12 +2,16 @@
     "python.formatting.provider": "black",
     "[python]": {
         "editor.formatOnSave": true,
-        "editor.rulers": [130]
+        "editor.rulers": [
+            130
+        ]
     },
     "[markdown]": {
         "editor.wordWrap": "off",
-        "editor.rulers": [80],
+        "editor.rulers": [
+            80
+        ],
         "editor.quickSuggestions": false,
-        "editor.renderWhitespace": "boundary"
+        "editor.renderWhitespace": "boundary",
     },
 }

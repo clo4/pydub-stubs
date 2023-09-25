@@ -36,10 +36,10 @@ These are legacy types that have been replaced by the `channels`,
 
 * **Modernized the type stubs**<br>
   Uses new union syntax, and more. ([#2](https://github.com/clo4/pydub-stubs/pull/2)
-  and [#3](https://github.com/clo4/pydub-stubs/pull/3) - thanks, @Viicos!)
+  and [#3](https://github.com/clo4/pydub-stubs/pull/3) - thanks, [@Viicos](https://github.com/Viicos)!)
 
 * **Add `WavSubChunk`, `WavData`, and undocumented functions**<br>
-  These previously existed and were available but were untyped. (thanks again, @Viicos!)
+  These previously existed and were available but were untyped. (thanks again, [@Viicos](https://github.com/Viicos)!)
 
 <details>
 <summary>Previous versions</summary>

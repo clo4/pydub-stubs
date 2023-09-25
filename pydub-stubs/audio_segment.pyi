@@ -6,7 +6,6 @@ from typing import (
     Iterator,
     Literal,
     NamedTuple,
-    Optional,
     Sequence,
     TypedDict,
     BinaryIO,
@@ -92,7 +91,6 @@ class AudioSegment:
         data: _AudioDataSource | list[bytes],
         overrides: _PartialMetadata = ...,
     ) -> Self: ...
-    @overload
     def export(
         self,
         out_f: _PathLike | None = ...,
@@ -103,19 +101,6 @@ class AudioSegment:
         tags: dict[str, str] | None = ...,
         parameters: Sequence[str] | None = ...,
         id3v2_version: Literal["3", "4"] = ...,
-        cover: str | None = ...,
-    ) -> BinaryIO: ...
-    @overload  # fallback
-    def export(
-        self,
-        out_f: _PathLike | None = ...,
-        *,
-        format: str = ...,
-        codec: str | None = ...,
-        bitrate: str | None = ...,
-        tags: dict[str, str] | None = ...,
-        parameters: Sequence[str] | None = ...,
-        id3v2_version: str = ...,
         cover: str | None = ...,
     ) -> BinaryIO: ...
     def frame_count(self, ms: int = ...) -> float: ...
@@ -145,24 +130,12 @@ class AudioSegment:
     def set_frame_rate(self, frame_rate: int) -> Self: ...
     def set_channels(self, channels: int) -> Self: ...
     def split_to_mono(self) -> list[Self]: ...
-    @overload
     def get_array_of_samples(
         self,
         array_type_override: Literal["b", "B", "h", "H", "i", "I", "l", "L", "q", "Q"] | None = ...,
     ) -> array[int]: ...
-    @overload  # fallback
-    def get_array_of_samples(
-        self,
-        array_type_override: Optional[str] = ...,
-    ) -> array[int]: ...
-    @overload
     def get_dc_offset(self, channel: Literal[1, 2]) -> int: ...
-    @overload  # fallback
-    def get_dc_offset(self, channel: int) -> int: ...
-    @overload
     def remove_dc_offset(self, channel: Literal[1, 2] | None = ..., offset: float | None = ...) -> Self: ...
-    @overload  # fallback
-    def remove_dc_offset(self, channel: int | None = ..., offset: float | None = ...) -> Self: ...
     @overload
     @classmethod
     def from_file(

@@ -1,4 +1,4 @@
-from typing import Callable, Literal, TypeVar, Union, overload
+from typing import Callable, Literal, TypeVar
 
 from .audio_segment import AudioSegment
 
@@ -15,17 +15,10 @@ def strip_silence(
 def compress_dynamic_range(
     seg: _AudioSegmentT, threshold: float = ..., ratio: float = ..., attack: float = ..., release: float = ...
 ) -> _AudioSegmentT: ...
-@overload
 def invert_phase(
     seg: _AudioSegmentT,
-    channels: Union[
-        tuple[Literal[1], Literal[1]],
-        tuple[Literal[1], Literal[0]],
-        tuple[Literal[0], Literal[1]],
-    ] = ...,
+    channels: tuple[Literal[1], Literal[1]] | tuple[Literal[1], Literal[0]] | tuple[Literal[0], Literal[1]] = ...,
 ) -> _AudioSegmentT: ...
-@overload  # fallback
-def invert_phase(seg: _AudioSegmentT, channels: tuple[int, int] = ...) -> _AudioSegmentT: ...
 def low_pass_filter(seg: _AudioSegmentT, cutoff: float) -> _AudioSegmentT: ...
 def high_pass_filter(seg: _AudioSegmentT, cutoff: float) -> _AudioSegmentT: ...
 def pan(seg: _AudioSegmentT, pan_amount: float) -> _AudioSegmentT: ...

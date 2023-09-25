@@ -26,16 +26,6 @@ def eq(
     gain_dB: int = ...,
     order: int = ...,
 ) -> AudioSegment: ...
-@overload  # fallback
-def eq(
-    seg: AudioSegment,
-    focus_freq: int,
-    bandwidth: int = ...,
-    channel_mode: str = ...,
-    filter_mode: str = ...,
-    gain_dB: int = ...,
-    order: int = ...,
-) -> AudioSegment: ...
 def low_pass_filter(seg: _AudioSegmentT, cutoff_freq: float, order: int = ...) -> _AudioSegmentT: ...
 def high_pass_filter(seg: _AudioSegmentT, cutoff_freq: float, order: int = ...) -> _AudioSegmentT: ...
 def band_pass_filter(

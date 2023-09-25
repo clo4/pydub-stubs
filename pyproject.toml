@@ -1,24 +1,25 @@
 [tool.poetry]
 name = "pydub-stubs"
-version = "0.25.1.0"
+version = "0.25.1.1"
 description = "Stub-only package containing type information for pydub"
-authors = ["SeparateRecords <me@rob.ac>"]
+authors = ["SeparateRecords <hey@clo4.net>"]
 license = "ISC"
 packages = [
     { include = "pydub-stubs" },
 ]
 keywords = [
     "pydub",
+    "types",
     "typing",
     "stubs",
 ]
-repository = "https://github.com/SeparateRecords/pydub-stubs"
+repository = "https://github.com/clo4/pydub-stubs"
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
+    "Programming Language :: Python :: 3",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: ISC License (ISCL)",
-    "Topic :: Software Development",
-    "Typing :: Typed",
+    "Typing :: Stubs Only",
 ]
 readme = "README.md"
 

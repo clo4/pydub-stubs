@@ -3,7 +3,8 @@
 Pydub version: **0.25.1**
 
 **`pydub-stubs` provides type information for [Pydub].**<br>
-Only the public interface is guaranteed to be typed.
+Only the public interface is guaranteed to be typed, however there
+are type definitions for some private and undocumented functions.
 
 [Pydub]: https://github.com/jiaaro/pydub
 
@@ -15,11 +16,11 @@ pip install pydub-stubs
 
 ## Anticipated Questions
 
-### Q: Why is <code>AudioSegment.<i>effect(...)</i></code> missing?
+### Q: Why is <code>AudioSegment.<i>some_effect(...)</i></code> missing?
 
 You need to import it as a function from `pydub.effects`.
 
-### Q: What is `Metadata` and `PartialMetadata`?
+### Q: What is `_Metadata` and `_PartialMetadata`?
 
 These are legacy types that have been replaced by the `channels`,
 `frame_rate`, and `sample_rate` keyword arguments.
@@ -27,6 +28,21 @@ These are legacy types that have been replaced by the `channels`,
 <br>
 
 ## Changelog
+
+### Version 0.25.1.1
+
+* **Removed literal type fallback overloads**<br>
+  The fallbacks removed all the advantages of using literals at all.
+
+* **Modernized the type stubs**<br>
+  Uses new union syntax, and more. ([#2](https://github.com/clo4/pydub-stubs/pull/2)
+  and [#3](https://github.com/clo4/pydub-stubs/pull/3) - thanks, @Viicos!)
+
+* **Add `WavSubChunk`, `WavData`, and undocumented functions**<br>
+  These previously existed and were available but were untyped. (thanks again, @Viicos!)
+
+<details>
+<summary>Previous versions</summary>
 
 ### Version 0.25.1.0
 
@@ -38,9 +54,6 @@ These are legacy types that have been replaced by the `channels`,
 
 * **Added missing modules**<br>
   `pydub.silence` and `pydub.utils`
-
-<details>
-<summary>Previous versions</summary>
 
 ### Version 0.24.1.9
 

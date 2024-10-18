@@ -1,5 +1,6 @@
 import os
 from array import array
+import pathlib
 from typing import (
     Any,
     ClassVar,
@@ -14,7 +15,7 @@ from typing import (
 
 from typing_extensions import TypeAlias, Self
 
-_PathLike: TypeAlias = str | bytes | os.PathLike[Any]
+_PathLike: TypeAlias = str | bytes | os.PathLike[Any] | pathlib.Path
 _AudioDataSource: TypeAlias = str | bytes | array[int] | BinaryIO
 
 class _Metadata(TypedDict):

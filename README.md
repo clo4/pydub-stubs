@@ -29,6 +29,11 @@ These are legacy types that have been replaced by the `channels`,
 
 ## Changelog
 
+### Version 0.25.1.2
+
+* **Added `pathlib.Path` to `_PathLike`**<br>
+  Allows you to use Path objects in place of strings without being yelled at. (thanks, [@qthequartermasterman](https://github.com/qthequartermasterman)!)
+
 ### Version 0.25.1.1
 
 * **Removed literal type fallback overloads**<br>

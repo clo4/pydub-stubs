@@ -17,3 +17,6 @@ dist/
 # npm
 node_modules/
 package-lock.json
+
+# nix
+.direnv

@@ -29,10 +29,17 @@ These are legacy types that have been replaced by the `channels`,
 
 ## Changelog
 
+### Version 0.25.1.3
+
+* **Added `typing.BinaryIO` to `_PathLike`**<br>
+  Pydub supports using an IO object in place of a file for both creating and
+  exporting AudioSegments. (Fixes [#5](https://github.com/clo4/pydub-stubs/issues/5))
+
 ### Version 0.25.1.2
 
 * **Added `pathlib.Path` to `_PathLike`**<br>
-  Allows you to use Path objects in place of strings without being yelled at. (thanks, [@qthequartermasterman](https://github.com/qthequartermasterman)!)
+  Allows you to use Path objects in place of strings without being yelled at.
+  (thanks, [@qthequartermasterman](https://github.com/qthequartermasterman)!)
 
 ### Version 0.25.1.1
 

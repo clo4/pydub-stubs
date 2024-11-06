@@ -15,7 +15,7 @@ from typing import (
 
 from typing_extensions import TypeAlias, Self
 
-_PathLike: TypeAlias = str | bytes | os.PathLike[Any] | pathlib.Path
+_PathLike: TypeAlias = str | bytes | os.PathLike[Any] | pathlib.Path | BinaryIO
 _AudioDataSource: TypeAlias = str | bytes | array[int] | BinaryIO
 
 class _Metadata(TypedDict):

@@ -16,10 +16,6 @@ pip install pydub-stubs
 
 ## Anticipated Questions
 
-### Q: Why is <code>AudioSegment.<i>some_effect(...)</i></code> missing?
-
-You need to import it as a function from `pydub.effects`.
-
 ### Q: What is `_Metadata` and `_PartialMetadata`?
 
 These are legacy types that have been replaced by the `channels`,
@@ -28,6 +24,14 @@ These are legacy types that have been replaced by the `channels`,
 <br>
 
 ## Changelog
+
+### Version 0.25.1.4
+
+* **Added "effect" functions as methods on `AudioSegment`**<br>
+  The methods have always been accessible on AudioSegment, but since they are
+  not defined on the class, they were not previously defined in the type stubs.
+  Note that if `pydub.scipy_effects` is imported, the effect methods may have
+  slightly different definitions.
 
 ### Version 0.25.1.3
 
@@ -38,8 +42,8 @@ These are legacy types that have been replaced by the `channels`,
 ### Version 0.25.1.2
 
 * **Added `pathlib.Path` to `_PathLike`**<br>
-  Allows you to use Path objects in place of strings without being yelled at.
-  (thanks, [@qthequartermasterman](https://github.com/qthequartermasterman)!)
+  Allows you to use `Path` objects in place of strings. (thanks,
+  [@qthequartermasterman](https://github.com/qthequartermasterman)!)
 
 ### Version 0.25.1.1
 

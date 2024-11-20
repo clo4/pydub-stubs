@@ -37,5 +37,5 @@ class Sawtooth(SignalGenerator):
 class Triangle(Sawtooth):
     def __init__(self, freq: float, *, sample_rate: int = ..., bit_depth: Literal[8, 16, 32] = ...) -> None: ...
 
-class Whitenoise(SignalGenerator):
+class WhiteNoise(SignalGenerator):
     def generate(self) -> Iterator[float]: ...

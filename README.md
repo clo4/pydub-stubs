@@ -25,6 +25,12 @@ These are legacy types that have been replaced by the `channels`,
 
 ## Changelog
 
+### Version 0.25.1.5
+
+* **Fixed incorrect `WhiteNoise` generator name**<br>
+  Previously, the generator was incorrectly named `Whitenoise`.
+  ([#7](https://github.com/clo4/pydub-stubs/pull/7) - thanks, [@Kakadus](https://github.com/Kakadus)!)
+
 ### Version 0.25.1.4
 
 * **Added "effect" functions as methods on `AudioSegment`**<br>

@@ -25,6 +25,13 @@ and `sample_rate` keyword arguments.
 
 ## Changelog
 
+### Version 0.25.1.6
+
+- **Fixed incorrect undocumented `fix_wav_headers` function signature**<br>
+  Previously, the function signature was defined as taking a `bytes`, but this
+  is incorrect as the function mutates the value. The signature has been updated
+  to `bytearray`. (Fixes [#8](https://github.com/clo4/pydub-stubs/issues/8))
+
 ### Version 0.25.1.5
 
 - **Fixed incorrect `WhiteNoise` generator name**<br> Previously, the generator

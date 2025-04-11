@@ -45,7 +45,7 @@ class WavData(NamedTuple):
 
 def extract_wav_headers(data: bytes) -> list[WavSubChunk]: ...  # undocumented
 def read_wav_audio(data: bytes, headers: list[WavSubChunk] | None = ...) -> WavData: ...  # undocumented
-def fix_wav_headers(data: bytes) -> None: ...  # undocumented
+def fix_wav_headers(data: bytearray) -> None: ...  # undocumented
 
 class AudioSegment:
     converter: ClassVar[str]
